@@ -7,14 +7,7 @@ import SortCss from "postcss-sort-media-queries";
 import type { UserConfig } from "vite";
 
 export default defineConfig(({ command }): UserConfig => {
-  const htmlFiles = globSync("./src/*.html");
-
-  const input: Record<string, string> = htmlFiles.reduce((acc, file) => {
-    const name = path.basename(file, path.extname(file));
-    acc[name] = path.resolve(file);
-    return acc;
-  }, {} as Record<string, string>);
-
+ 
   return {
     root: "src",
     base: "/01-ts-basics/",
@@ -27,7 +20,7 @@ export default defineConfig(({ command }): UserConfig => {
       outDir: "../dist",
       emptyOutDir: true,
       rollupOptions: {
-        input,
+        input: getHtmlInputs(),
         output: {
           manualChunks(id) {
             if (id.includes("node_modules")) {
@@ -58,3 +51,16 @@ export default defineConfig(({ command }): UserConfig => {
     ],
   };
 });
+
+
+function getHtmlInputs() {
+  const htmlFiles = globSync("./src/*.html");
+  const input: Record<string, string> = {};
+
+  htmlFiles.forEach((filePath) => {
+    const name = path.basename(filePath, ".html");
+    input[name] = path.resolve(__dirname, filePath);
+  });
+
+  return input;
+}

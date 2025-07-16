@@ -5,14 +5,20 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build --base=/01-ts-basics/",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/node": "^24.0.14",
+    "glob": "^11.0.3",
+    "postcss": "^8.5.6",
+    "postcss-sort-media-queries": "^5.2.0",
     "typescript": "~5.8.3",
     "vite": "^7.0.4"
   },
   "dependencies": {
-    "axios": "^1.10.0"
+    "axios": "^1.10.0",
+    "vite-plugin-full-reload": "^1.2.0",
+    "vite-plugin-html-inject": "^1.1.2"
   }
 }

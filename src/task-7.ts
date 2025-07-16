@@ -1,9 +1,8 @@
-console.log("----- Task 7 -----");
 
-
-function getMessage() {
+function getMessage(): Promise<string> {
   return new Promise((resolve) => {
     setTimeout(() => {
+      console.log("----- Task 7 -----");
       resolve("Hello from TS");
     }, 1000);
   });
@@ -11,4 +10,4 @@ function getMessage() {
 
 getMessage().then((result) => console.log(result));
 
-console.log("");
+

@@ -17,7 +17,7 @@ export default defineConfig(({ command }): UserConfig => {
 
   return {
     root: "src",
-    //base: "/01-ts-basics/", // ← дуже важливо для GitHub Pages
+    base: "/01-ts-basics/",
     define: {
       [command === "serve" ? "global" : "_global"]: {},
     },
